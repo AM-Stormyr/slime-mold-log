@@ -12,6 +12,11 @@ I'm observing its behavior, growth patterns, preferences, and strange intelligen
 - [JavaScript Folder](./js/) `js/`,
 - [Home Page (HTML)](./index.html) `index.html`: Optional interface to turn the log into a webpage
 
+## Sources
+
+- Sclerotia sourced from [AntsyCA](https://www.etsy.com/ca/shop/AntsyCA?ref=profile_header), an independent mycology shop run by Gaël on Etsy.
+
+
 ---
 AM Stormyr  
 November 14th 2025  
