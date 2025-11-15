@@ -3,6 +3,9 @@
 This is an ongoing documentation of my Physarum polycephalum experiment.  
 Started: November 14 at 11:47AM, 2025
 
+## Live Notebook
+[View the Living Notebook website](https://am-stormyr.github.io/slime-mold-log/)
+
 ---
 
 ## Day 01 – November 14, 2025
