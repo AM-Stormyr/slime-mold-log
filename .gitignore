@@ -1,0 +1,17 @@
+# Environment files
+.env
+venv/
+.envrc
+
+# VS Code
+.vscode/
+
+# Node modules
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Mac system files
+.DS_Store
