@@ -2,98 +2,81 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slime Mold Log</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
-    rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 2rem;
-      font-family: 'DM Mono', monospace;
-      background-color: white;
-      color: black;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    <meta charset="UTF-8" />
+    <title>Slime Mold Log – Ani0</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: white;
+            color: black;
+            font-family: 'DM Mono', monospace;
+            overflow: hidden;
+        }
 
-    h1 {
-      font-weight: bold;
-      font-size: 1.75rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    figure {
-      margin: 0 0 3rem 0;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 0.5rem;
-    }
-
-    figcaption {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-  </style>
+        canvas {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
-  <h1>Slime Mold Living Lab Notebook</h1>
-  <div class="entry">
-    <h2>2025-11-14 — Day 1</h2>
-    <p>
-      Initial inoculation of physarum. Coffee filter setup, oat added,
-      stored in Tupperware with moist conditions. Two locations tested:
-      agar plate and dry paper.
-    </p>
-    <figure>
-      <img src="media/2025-11-14_physarum_day1_setup.jpg" alt="Physarum setup day 1" />
-      <figcaption>
-        <strong>Day 1</strong> – Home setup showing: alcohol, paper towel, metal dish for clean environment, medical
-        tape, zip lock bags
-        (for keeping everything clean after inoculation), masking tape (for keeping every sample labelled), tupperware
-        to
-        keep the samples in (I made small airholes with a safety pin and put medical tape on top to keep dust out but
-        air
-        in), latex gloves, scissors, wood spoons (didn't use them), coffee filters (didn't use them, used agar instead).
-      </figcaption>
-    </figure>
+    <script>
+        let lines = [
+            "initializing...",
+            "Ani0 is awake.",
+            "contact.",
+            "click to enter log"
+        ];
+        let displayedLines = [];
+        let currentLine = 0;
+        let currentChar = 0;
+        let typingSpeed = 5;
+        let finished = false;
 
-    <figure>
-      <img src="media/2025-11-14_sclerotia_dry_closeup.jpg" alt="Sclerotia dry closeup" />
-      <figcaption>
-        <strong>Day 1</strong> – Here’s the sclerotia dry on little sheets, before inoculation.
-      </figcaption>
-    </figure>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            textFont('DM Mono');
+            textSize(20);
+            fill(0);
+        }
 
-    <figure>
-      <img src="media/2025-11-14_sclerotia_on_agar_closeup.jpg" alt="Sclerotia on agar" />
-      <figcaption>
-        <strong>Day 1</strong> – The samples are gently moistened with spring water and placed above agar on petri dish.
-        The oats are
-        also
-        moistened a bit.
-      </figcaption>
-    </figure>
+        function draw() {
+            background(255);
+            let y = height / 2 - 40;
 
-    <figure>
-      <img src="media/2025-11-14_physarum_day1_storage.jpg" alt="Physarum storage" />
-      <figcaption>
-        <strong>Day 1</strong> – Showing the samples placed inside storage containers in closet. They will be kept in
-        complete darkness
-        and
-        the temperature is ranging from 20–22 degrees. The closet will keep the temp more stable.
-      </figcaption>
-    </figure>
+            for (let i = 0; i < displayedLines.length; i++) {
+                text(displayedLines[i], width / 2 - 200, y + i * 30);
+            }
+
+            if (!finished) {
+                if (frameCount % typingSpeed === 0) {
+                    let line = lines[currentLine];
+                    let nextChar = line.charAt(currentChar);
+                    if (displayedLines[currentLine] === undefined) displayedLines[currentLine] = "";
+                    displayedLines[currentLine] += nextChar;
+                    currentChar++;
+
+                    if (currentChar >= line.length) {
+                        currentLine++;
+                        currentChar = 0;
+                        if (currentLine >= lines.length) {
+                            finished = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        function mousePressed() {
+            if (finished) {
+                window.location.href = "log.html"; // replace with your log filename
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -22,3 +22,7 @@ function setup() {
 function draw() {
 
 }
+
+function mousePressed() {
+    window.location.href = "log.html";
+}
